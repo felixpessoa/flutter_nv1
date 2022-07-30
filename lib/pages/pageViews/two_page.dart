@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-class TwoPage extends StatelessWidget {
+import '../../widgets/custom_button_widget.dart';
 
+class TwoPage extends StatelessWidget {
   const TwoPage({Key? key}) : super(key: key);
 
   @override
@@ -11,15 +12,17 @@ class TwoPage extends StatelessWidget {
       appBar: AppBar(),
       backgroundColor: Colors.blue.shade100,
       body: Center(
-        child: ElevatedButton(
+        child: CustomButtonWidget(
+          disable: false,
+          titleSize: 18,
           onPressed: () {
-            if(Navigator.of(context).canPop()){
+            if (Navigator.of(context).canPop()) {
               Navigator.of(context).pop('Retorno');
             }
             // Navigator.of(context).pop('Retorno');
           },
-          child: Text('Voltar para $args'),
-        ), 
+          title: 'Voltar para $args',
+        ),
       ),
     );
   }
