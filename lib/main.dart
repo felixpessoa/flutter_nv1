@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_nv1/pages/home_page.dart';
-import 'package:flutter_nv1/pages/pageViews/one_page.dart';
 import 'package:flutter_nv1/pages/pageViews/two_page.dart';
 import 'package:flutter_nv1/pages/todo_list_page.dart';
 
@@ -24,9 +23,12 @@ class MyApp extends StatelessWidget {
         '/': (_) {
           return HomePage();
         },
-        '/twoPage':(context) {
+        '/twoPage':(_) {
           return TwoPage();
-        }
+        },
+        '/list': (_) {
+          return TodoListPage();
+        },
       },
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_nv1/pages/pageViews/one_page.dart';
 
+
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
 
@@ -14,6 +15,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: Text('AppBar'),
@@ -65,18 +67,24 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      body: PageView(
-          controller: _pageController,
-          children: [
-            OnePage(),
-            Container(color: Colors.red),
-            Container(color: Colors.yellow),
-          ],
-          onPageChanged: (page) {
-            setState(() {
-              indexBottomNavigationBar = page;
-            });
-          }),
+      body: SingleChildScrollView(
+        child: SizedBox(
+          height: size.height,
+          width: size.width,
+          child: PageView(
+              controller: _pageController,
+              children: [
+                OnePage(),
+                Container(color: Colors.red),
+                Container(color: Colors.yellow), 
+              ],
+              onPageChanged: (page) {
+                setState(() {
+                  indexBottomNavigationBar = page;
+                });
+              }),
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: indexBottomNavigationBar,
         onTap: (int page) {

@@ -17,14 +17,6 @@ class CustomButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: disable ? null : onPressed,
-      child: Text(
-        title,
-        // style: TextStyle(
-        //   color: Colors.white,
-        //   fontSize: 25,
-        //   fontWeight: FontWeight.bold,
-        // ),
-      ),
       style: ButtonStyle(
           backgroundColor: MaterialStateProperty.resolveWith<Color>((states) {
             if (states.contains(MaterialState.disabled)) return Colors.red;
@@ -36,13 +28,22 @@ class CustomButtonWidget extends StatelessWidget {
           ),
           textStyle: MaterialStateProperty.resolveWith(
             (states) {
-              if (states.contains(MaterialState.pressed))
+              if (states.contains(MaterialState.pressed)) {
                 return TextStyle(
                   fontSize: titleSize != null ? titleSize! * 2 : 28,
                 );
+              }
               return TextStyle(fontSize: titleSize);
             },
           )),
+      child: Text(
+        title,
+        // style: TextStyle(
+        //   color: Colors.white,
+        //   fontSize: 25,
+        //   fontWeight: FontWeight.bold,
+        // ),
+      ),
     );
   }
 }
